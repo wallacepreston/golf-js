@@ -1,6 +1,10 @@
+// YOUR CODE
+
 function golfScore(par, strokes) {
   
-  if (strokes == 1) {
+  if (strokes == 0) {
+      return;
+  } else if (strokes == 1) {
       return "Hole-in-one!";
   } else if (strokes <= par - 2) {
       return "Eagle";
@@ -16,6 +20,8 @@ function golfScore(par, strokes) {
       return "Go Home!";
   }
 }
+
+// DO NOT EDIT BELOW
 
 try {
   module.exports = golfScore;
