@@ -392,7 +392,7 @@ function preload() {
     sandImg = loadImage("images/sand.jpg");
     grassImgD = loadImage("images/grassD.jpg");
     grassImgL = loadImage("images/grassL.jpg");
-    font = loadFont("images/pixelFont.otf");
+    font = loadFont("images/ReadexPro.ttf");
     shotDemoImg = loadImage("images/shotDemo.jpg");
     holeDemoImg = loadImage("images/holeDemo.jpg");
     obstacleDemoImg = loadImage("images/obstacleDemo.jpg");
