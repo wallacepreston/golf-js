@@ -6,8 +6,11 @@ Getting Started
     npm i
 
 Viewing the Project    
-View the html file in the browser
-
+Two options:
+1. View the html file in the browser
+2. Run the server
+    - `node server.js`
+    - View [localhost:8080](http://localhost:8080) in the browser
 
 Running Tests
 
