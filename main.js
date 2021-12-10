@@ -51,6 +51,8 @@ var nx = 0;
 var ny = 0;
 
 var strokes = 0;
+var holeStrokes = 0;
+var lastHoleStrokes = 0;
 
 var grass;
 var grasses;
@@ -546,6 +548,7 @@ function shot(){
     onBall = false;
     meterLength = 0;
     strokes++;
+    holeStrokes++;
     var tx = -nx * .75;
     var ty = -ny * .75;
     ball.setVelocity(tx,ty);
@@ -590,6 +593,10 @@ function draw() {
             text("Hole " + (level-1),25, 50);
         }
         text("Strokes: " + strokes,width-395, 50);
+        if(level && holeStrokes === 0) {
+            text(golfScore(pars[level - 1], lastHoleStrokes),width-395, 112);
+        }
+        
         drawSprites();
         if(level == 10){
             hole.bounce(walls);
@@ -610,6 +617,8 @@ function draw() {
         }
         if(ball.overlap(hole)){
             level++;
+            lastHoleStrokes = holeStrokes;
+            holeStrokes = 0;
             removeHole();
             if(level == 11){
                 gameState = OUTTRO;
