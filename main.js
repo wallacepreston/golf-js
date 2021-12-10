@@ -564,7 +564,7 @@ function draw() {
     }
     else if (gameState == DIRECTIONS) {
         backButton.draw();
-        textSize(50);
+        textSize(40);
         textFont(font);
         fill('white');
         
@@ -581,7 +581,7 @@ function draw() {
     }
     else if (gameState == PLAYING) {
         fill('White');
-        textSize(50);
+        textSize(40);
         textFont(font);
         if(level < 6){
             text("Hole " + (level+1),25, 50);
@@ -593,8 +593,18 @@ function draw() {
             text("Hole " + (level-1),25, 50);
         }
         text("Strokes: " + strokes,width-395, 50);
-        if(level && holeStrokes === 0) {
-            text(golfScore(pars[level - 1], lastHoleStrokes),width-395, 112);
+        if(level) {
+            let scoreToDisplay;
+            if (holeStrokes === 0) {
+                try {
+                    scoreToDisplay = lastHoleStrokes + ': ' + golfScore(pars[level - 1], lastHoleStrokes);
+                } catch (err) {
+                    scoreToDisplay = '** SCORE HERE **';
+                }
+            } else {
+                scoreToDisplay = 'This Hole: ' + holeStrokes;
+            }
+            text(scoreToDisplay,width-395, 112);
         }
         
         drawSprites();
@@ -631,7 +641,7 @@ function draw() {
     }
 
     else if (gameState == OUTTRO) {
-        textSize(75);
+        textSize(45);
         textFont(font);
         fill('white');
         text("Congratulations!", width*.5 - 450,height*.15);
@@ -639,7 +649,7 @@ function draw() {
         text("You finished the course",width*.5 - 340,height*.25);
         text("in "+strokes+" strokes", width*.5 - 175,height*.3);
         var score = strokes - parScore;
-        textSize(50);
+        textSize(40);
         if(score > 0){
             text("Score: +" + score, width*.5 - 150,height*.4);
         }
